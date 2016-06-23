@@ -49,11 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAdd.cs">
+    <Compile Include="frmAddLine.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAdd.Designer.cs">
-      <DependentUpon>frmAdd.cs</DependentUpon>
+    <Compile Include="frmAddLine.Designer.cs">
+      <DependentUpon>frmAddLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddCity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddCity.Designer.cs">
+      <DependentUpon>frmAddCity.cs</DependentUpon>
     </Compile>
     <Compile Include="frmFunctions.cs">
       <SubType>Form</SubType>
@@ -70,8 +76,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLAgent.cs" />
-    <EmbeddedResource Include="frmAdd.resx">
-      <DependentUpon>frmAdd.cs</DependentUpon>
+    <EmbeddedResource Include="frmAddLine.resx">
+      <DependentUpon>frmAddLine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFunctions.resx">
       <DependentUpon>frmFunctions.cs</DependentUpon>

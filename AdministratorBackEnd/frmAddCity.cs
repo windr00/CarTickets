@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AdministratorBackEnd
 {
-    public partial class frmAdd : Form
+    public partial class frmAddCity : Form
     {
-        public frmAdd()
+        public frmAddCity()
         {
             InitializeComponent();
         }

@@ -33,7 +33,7 @@ namespace AdministratorBackEnd
         }
 
 
-        public bool login(string user, string pass)
+        public bool AdminLogin(string user, string pass)
         {
             try
             {
@@ -44,6 +44,43 @@ namespace AdministratorBackEnd
                     return false;
                 }
                 return true;
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+        }
+
+        public List<string> GetCityList()
+        {
+            try
+            {
+                List<string> cityList = new List<string>();
+                string cmdStr = "select * from city";
+                var result = connector.ExecuteCommand(cmdStr);
+                foreach (List<string> i in result)
+                {
+                    cityList.Add(i[1]);
+                }
+                return cityList;
+
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+        }
+
+        public void AddLine(string num, int dep_city, int arr_city, float price, DateTime dep_date, DateTime arr_date)
+        {
+            try
+            {
+                string cmdStr =
+                    "insert into line(line_train_num, line_dep_city, line_arr_city, line_price, line_dep_date, line_arr_date) " +
+                    "values( '"
+                    + num + "','" + dep_city + "','" + arr_city + "','" + price + "','" + dep_date.ToString() + "','" +
+                    arr_date.ToString() + "');";
+                connector.ExecuteCommand(cmdStr);
             }
             catch (SqlException e)
             {

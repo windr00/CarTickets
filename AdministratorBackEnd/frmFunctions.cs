@@ -16,5 +16,20 @@ namespace AdministratorBackEnd
         {
             InitializeComponent();
         }
+
+        private void btnLineAdd_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.Enabled = false;
+            frmAddLine frm = new frmAddLine();
+            frm.FormClosed += frmAdd_FormClosed;
+            frm.Show();
+        }
+
+        private void frmAdd_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Enabled = true;
+            this.Show();
+        }
     }
 }

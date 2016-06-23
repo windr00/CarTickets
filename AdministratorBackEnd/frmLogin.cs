@@ -25,7 +25,7 @@ namespace AdministratorBackEnd
                 try
                 {
                     var sqlAgent = SQLAgent.GetInstance();
-                    sqlAgent.login("sa", "???|||");
+                    sqlAgent.AdminLogin("sa", "???|||");
                 }
                 catch (SqlException ex)
                 {

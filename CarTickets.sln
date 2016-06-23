@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLSEVConnector", "SQLSEVConnector\SQLSEVConnector.csproj", "{04B4D17F-E622-441F-8C5F-CFE05F5D5830}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLSRVConnector", "SQLSEVConnector\SQLSRVConnector.csproj", "{04B4D17F-E622-441F-8C5F-CFE05F5D5830}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministratorBackEnd", "AdministratorBackEnd\AdministratorBackEnd.csproj", "{0937B874-8ACE-49F3-8372-948DAF306B2A}"
 EndProject
