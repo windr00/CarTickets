@@ -51,16 +51,16 @@ namespace AdministratorBackEnd
             }
         }
 
-        public List<string> GetCityList()
+        public List<CityDataBean> GetCityList()
         {
             try
             {
-                List<string> cityList = new List<string>();
+                List<CityDataBean> cityList = new List<CityDataBean>();
                 string cmdStr = "select * from city";
                 var result = connector.ExecuteCommand(cmdStr);
                 foreach (List<string> i in result)
                 {
-                    cityList.Add(i[1]);
+                    cityList.Add(new CityDataBean(i[0], i[1]));
                 }
                 return cityList;
 
@@ -80,6 +80,80 @@ namespace AdministratorBackEnd
                     "values( '"
                     + num + "','" + dep_city + "','" + arr_city + "','" + price + "','" + dep_date.ToString() + "','" +
                     arr_date.ToString() + "');";
+                connector.ExecuteCommand(cmdStr);
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+        }
+
+        public List<LineDataBean> GetLines()
+        {
+            List<LineDataBean> lineList = new List<LineDataBean>();
+
+            try
+            {
+                string cmdStr = "select * from line";
+                var result = connector.ExecuteCommand(cmdStr);
+                foreach (List<string> i in result)
+                {
+                    lineList.Add(new LineDataBean(int.Parse(i[0]), i[1], int.Parse(i[2]), int.Parse(i[3]),
+                        float.Parse(i[4]), DateTime.Parse(i[5]), DateTime.Parse(i[6])));
+                }
+                return lineList;
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+        }
+
+        public uint GetLineRemainSeat(int id)
+        {
+            try
+            {
+                string cmdStr = "select * from user_order where line_id='" + id + "';";
+                var taken = connector.ExecuteCommand(cmdStr).Count;
+                return 50 - (uint) taken;
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+        }
+
+        public void AddCity(string name)
+        {
+            try
+            {
+                string cmdStr = "insert into city(city_name) values('" + name + "');";
+                connector.ExecuteCommand(cmdStr);
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+        }
+
+        public void ModifyCity(int id, string newName)
+        {
+            try
+            {
+                string cmdStr = "update city set city_name='" + newName + "' where city_id='" + id.ToString() + "';";
+                connector.ExecuteCommand(cmdStr);
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+        }
+
+        public void DeleteCity(int id)
+        {
+            try
+            {
+                string cmdStr = "delete from city where city_id='" + id.ToString() + "';";
                 connector.ExecuteCommand(cmdStr);
             }
             catch (SqlException e)

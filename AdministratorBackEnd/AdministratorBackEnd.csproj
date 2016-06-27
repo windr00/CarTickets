@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CityDataBean.cs" />
     <Compile Include="frmAddLine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,11 +62,23 @@
     <Compile Include="frmAddCity.Designer.cs">
       <DependentUpon>frmAddCity.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDeleteCity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeleteCity.Designer.cs">
+      <DependentUpon>frmDeleteCity.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFunctions.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmFunctions.Designer.cs">
       <DependentUpon>frmFunctions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLineRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLineRUD.Designer.cs">
+      <DependentUpon>frmLineRUD.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -73,17 +86,45 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmModifyCity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModifyCity.Designer.cs">
+      <DependentUpon>frmModifyCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewCity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewCity.Designer.cs">
+      <DependentUpon>frmViewCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LineDataBean.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLAgent.cs" />
+    <EmbeddedResource Include="frmAddCity.resx">
+      <DependentUpon>frmAddCity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddLine.resx">
       <DependentUpon>frmAddLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeleteCity.resx">
+      <DependentUpon>frmDeleteCity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFunctions.resx">
       <DependentUpon>frmFunctions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLineRUD.resx">
+      <DependentUpon>frmLineRUD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModifyCity.resx">
+      <DependentUpon>frmModifyCity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewCity.resx">
+      <DependentUpon>frmViewCity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

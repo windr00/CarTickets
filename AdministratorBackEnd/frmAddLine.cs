@@ -15,6 +15,7 @@ namespace AdministratorBackEnd
     {
 
         private SQLAgent agent;
+        private List<CityDataBean> cityList;
         public frmAddLine()
         {
             InitializeComponent();
@@ -23,11 +24,14 @@ namespace AdministratorBackEnd
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (txtNum.Text != string.Empty && txtPrice.Text != string.Empty && cmbDep.Text != string.Empty && cmbArr.Text != string.Empty && (dateArr.Value - dateDep.Value > TimeSpan.Zero))
+            if (txtNum.Text != string.Empty && txtPrice.Text != string.Empty 
+                && cmbDep.Items.Contains(cmbDep.Text) && cmbArr.Items.Contains(cmbArr.Text) &&
+                (dateArr.Value - dateDep.Value > TimeSpan.Zero))
             {
                 try
                 {
-                    agent.AddLine(txtNum.Text, cmbDep.SelectedIndex, cmbArr.SelectedIndex, float.Parse(txtPrice.Text),
+                    agent.AddLine(txtNum.Text, int.Parse(cityList[cmbDep.SelectedIndex].cityId),
+                        int.Parse(cityList[cmbArr.SelectedIndex].cityId), float.Parse(txtPrice.Text),
                         dateDep.Value, dateArr.Value);
                     var ret = MessageBox.Show(
                         "Successfully added this line.\nDo you want to continue to add new lines?", "Finished",
@@ -40,7 +44,6 @@ namespace AdministratorBackEnd
                         cmbArr.Text = string.Empty;
                         dateDep.Value = DateTime.Today;
                         dateArr.Value = DateTime.Today;
-
                     }
                     else
                     {
@@ -50,8 +53,12 @@ namespace AdministratorBackEnd
                 catch (SqlException ex)
                 {
                     MessageBox.Show("FATAL Error\n" + e.ToString(), "Error", MessageBoxButtons.OK,
-           MessageBoxIcon.Error);
-                } 
+                        MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Not enough information or information illegal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -59,9 +66,12 @@ namespace AdministratorBackEnd
         {
             try
             {
-                var citylist = agent.GetCityList();
-                cmbDep.Items.AddRange(citylist.ToArray());
-                cmbArr.Items.AddRange(citylist.ToArray());
+                cityList = agent.GetCityList();
+                foreach (var bean in cityList)
+                {
+                    cmbDep.Items.Add(bean.cityName);
+                    cmbArr.Items.Add(bean.cityName);
+                }
             }
             catch (Exception ex)
             {
@@ -73,6 +83,14 @@ namespace AdministratorBackEnd
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != (char) 8)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

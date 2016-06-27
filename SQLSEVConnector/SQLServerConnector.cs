@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection;
 
 namespace SQLSEVConnector
 {
@@ -40,21 +41,28 @@ namespace SQLSEVConnector
             try
             {
                 List<List<string>> result = new List<List<string>>();
-                command.CommandText = cmd;
-                var reader = command.ExecuteReader();
-                do
+                if (command != null)
                 {
-                    while (reader.Read())
+                    command.CommandText = cmd;
+                    Console.WriteLine(cmd);
+                    var reader = command.ExecuteReader();
+                    Console.WriteLine(reader.FieldCount);
+                    while (reader.Read()) 
                     {
                         List<string> list = new List<string>();
-                        foreach (var filed in reader)
+                            
+                        for (int i = 0; i < reader.FieldCount; i ++)
                         {
-                            list.Add(filed.ToString());
+                            object re = reader[i];
+                            Type type = re.GetType();
+                            MethodInfo method = type.GetMethod("ToString", new Type[] {});
+                            list.Add(method.Invoke(re, null) as string);
+                            
                         }
                         result.Add(list);
-                    }
-                } while (reader.NextResult());
-                reader.Close();
+                    } 
+                    reader.Close();
+                }
                 return result;
             }
             catch (SqlException e)
