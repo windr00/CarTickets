@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdministratorBackEnd
 {
-    class LineDataBean
+   public  class LineDataBean
     {
         public int id { get; private set; }
 

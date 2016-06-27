@@ -53,6 +53,7 @@
             this.btnDelete.TabIndex = 13;
             this.btnDelete.Text = "删除";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnModify
             // 
@@ -63,21 +64,23 @@
             this.btnModify.TabIndex = 12;
             this.btnModify.Text = "修改";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(504, 12);
+            this.btnSearch.Location = new System.Drawing.Point(431, 12);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(45, 24);
+            this.btnSearch.Size = new System.Drawing.Size(118, 24);
             this.btnSearch.TabIndex = 11;
-            this.btnSearch.Text = "搜索";
+            this.btnSearch.Text = "搜索车次";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(12, 12);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(486, 23);
+            this.txtName.Size = new System.Drawing.Size(413, 23);
             this.txtName.TabIndex = 10;
             // 
             // dataView
@@ -95,11 +98,13 @@
             this.Column5,
             this.Column7});
             this.dataView.Location = new System.Drawing.Point(11, 46);
+            this.dataView.MultiSelect = false;
             this.dataView.Name = "dataView";
             this.dataView.ReadOnly = true;
             this.dataView.RowTemplate.Height = 23;
             this.dataView.Size = new System.Drawing.Size(538, 208);
             this.dataView.TabIndex = 9;
+            this.dataView.SelectionChanged += new System.EventHandler(this.dataView_SelectionChanged);
             // 
             // city_id
             // 

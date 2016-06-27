@@ -88,6 +88,25 @@ namespace AdministratorBackEnd
             }
         }
 
+        public void ModifyLine(int id, string num, int dep_city, int arr_city, float price, DateTime dep_date, DateTime arr_date)
+        {
+            try
+            {
+                string cmdStr = "update line set line_train_num='" + num +
+                                "', line_dep_city='" + dep_city + "'" +
+                                " ,line_arr_city='" + arr_city + "'" +
+                                " ,line_price='" + price + "'" +
+                                " ,line_dep_date='" + dep_date + "'" +
+                                " ,line_arr_date='" + arr_date + "' where line_id='" + id + "';";
+                connector.ExecuteCommand(cmdStr);
+
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+        }
+
         public List<LineDataBean> GetLines()
         {
             List<LineDataBean> lineList = new List<LineDataBean>();
@@ -102,6 +121,20 @@ namespace AdministratorBackEnd
                         float.Parse(i[4]), DateTime.Parse(i[5]), DateTime.Parse(i[6])));
                 }
                 return lineList;
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+        }
+
+        public void DeleteLine(int id)
+        {
+            try
+            {
+                string cmdStr = "delete from line where line_id='" + id + "';";
+                connector.ExecuteCommand(cmdStr);
+
             }
             catch (SqlException e)
             {
