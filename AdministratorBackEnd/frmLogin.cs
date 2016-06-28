@@ -30,7 +30,7 @@ namespace AdministratorBackEnd
                     frmFunctions functions = new frmFunctions();
                     functions.Show();
                 }
-                catch (SqlException ex)
+                catch (SQLSEVConnector.SqlException ex)
                 {
                     MessageBox.Show("Error connecting database\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

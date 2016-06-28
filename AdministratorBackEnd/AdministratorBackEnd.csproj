@@ -104,6 +104,12 @@
     <Compile Include="frmViewCity.Designer.cs">
       <DependentUpon>frmViewCity.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmViewOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewOrders.Designer.cs">
+      <DependentUpon>frmViewOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="LineDataBean.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewCity.resx">
       <DependentUpon>frmViewCity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewOrders.resx">
+      <DependentUpon>frmViewOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

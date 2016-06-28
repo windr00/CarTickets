@@ -50,7 +50,7 @@ namespace AdministratorBackEnd
                         this.Close();
                     }
                 }
-                catch (SqlException ex)
+                catch (SQLSEVConnector.SqlException ex)
                 {
                     MessageBox.Show("FATAL Error\n" + e.ToString(), "Error", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);

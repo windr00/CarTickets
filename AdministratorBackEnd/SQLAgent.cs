@@ -8,6 +8,9 @@ using SQLSEVConnector;
 
 namespace AdministratorBackEnd
 {
+
+
+
     class SQLAgent
     {
         private static SQLServerConnector connector;
@@ -24,9 +27,9 @@ namespace AdministratorBackEnd
         {
             try
             {
-                connector = new SQLServerConnector("localhost", "tickets", "sa", "???|||");
+                connector = new SQLServerConnector("http://localhost:8080/CarTickets/DBSrv");
             }
-            catch (SqlException e)
+            catch (SQLSEVConnector.SqlException e)
             {
                 throw e;
             }
@@ -45,7 +48,7 @@ namespace AdministratorBackEnd
                 }
                 return true;
             }
-            catch (SqlException e)
+            catch (SQLSEVConnector.SqlException e)
             {
                 throw e;
             }
@@ -65,7 +68,7 @@ namespace AdministratorBackEnd
                 return cityList;
 
             }
-            catch (SqlException e)
+            catch (SQLSEVConnector.SqlException e)
             {
                 throw e;
             }
@@ -82,7 +85,7 @@ namespace AdministratorBackEnd
                     arr_date.ToString() + "');";
                 connector.ExecuteCommand(cmdStr);
             }
-            catch (SqlException e)
+            catch (SQLSEVConnector.SqlException e)
             {
                 throw e;
             }
@@ -101,7 +104,7 @@ namespace AdministratorBackEnd
                 connector.ExecuteCommand(cmdStr);
 
             }
-            catch (SqlException e)
+            catch (SQLSEVConnector.SqlException e)
             {
                 throw e;
             }
@@ -122,7 +125,7 @@ namespace AdministratorBackEnd
                 }
                 return lineList;
             }
-            catch (SqlException e)
+            catch (SQLSEVConnector.SqlException e)
             {
                 throw e;
             }
@@ -136,7 +139,7 @@ namespace AdministratorBackEnd
                 connector.ExecuteCommand(cmdStr);
 
             }
-            catch (SqlException e)
+            catch (SQLSEVConnector.SqlException e)
             {
                 throw e;
             }
@@ -150,7 +153,7 @@ namespace AdministratorBackEnd
                 var taken = connector.ExecuteCommand(cmdStr).Count;
                 return 50 - (uint) taken;
             }
-            catch (SqlException e)
+            catch (SQLSEVConnector.SqlException e)
             {
                 throw e;
             }
@@ -163,7 +166,7 @@ namespace AdministratorBackEnd
                 string cmdStr = "insert into city(city_name) values('" + name + "');";
                 connector.ExecuteCommand(cmdStr);
             }
-            catch (SqlException e)
+            catch (SQLSEVConnector.SqlException e)
             {
                 throw e;
             }
@@ -176,7 +179,7 @@ namespace AdministratorBackEnd
                 string cmdStr = "update city set city_name='" + newName + "' where city_id='" + id.ToString() + "';";
                 connector.ExecuteCommand(cmdStr);
             }
-            catch (SqlException e)
+            catch (SQLSEVConnector.SqlException e)
             {
                 throw e;
             }
@@ -189,7 +192,7 @@ namespace AdministratorBackEnd
                 string cmdStr = "delete from city where city_id='" + id.ToString() + "';";
                 connector.ExecuteCommand(cmdStr);
             }
-            catch (SqlException e)
+            catch (SQLSEVConnector.SqlException e)
             {
                 throw e;
             }

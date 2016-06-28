@@ -101,7 +101,7 @@ namespace AdministratorBackEnd
                     this.Close();
                 }
             }
-            catch (SqlException ex)
+            catch (SQLSEVConnector.SqlException ex)
             {
                 MessageBox.Show("FATAL ERROR\n" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 frmModifyCity_Load(null, null);
