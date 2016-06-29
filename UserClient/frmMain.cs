@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SqlAgent;
 
 namespace UserClient
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
-        public Form1()
+
+        private SQLAgent agent = SQLAgent.GetInstance();
+        public frmMain()
         {
             InitializeComponent();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

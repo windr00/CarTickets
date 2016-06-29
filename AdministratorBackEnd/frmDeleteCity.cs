@@ -37,6 +37,18 @@ namespace AdministratorBackEnd
             {
                 try
                 {
+                    var city_id = int.Parse(cityList[cmbCity.SelectedIndex].cityId);
+                    var line_list = agent.GetLines();
+                    foreach (var i in line_list)
+                    {
+                        if (i.depCity == city_id || i.arrCity == city_id)
+                        {
+                            MessageBox.Show(
+                                "This city is used in one or more lines\nPlease delete those lines before removing this city",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
                     agent.DeleteCity(int.Parse(cityList[cmbCity.SelectedIndex].cityId));
                     var ret = MessageBox.Show("Successfully added this city. \nDo you want to add more cities?",
                         "Finished", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

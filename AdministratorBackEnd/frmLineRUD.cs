@@ -50,7 +50,7 @@ namespace AdministratorBackEnd
                     }
                 }
 
-                dataView.Rows.Add(line.id, line.trainNum, depCity, arrCity, line.price, line.depDate.ToString(), line.arrDate.ToString(), line.remainSeat);
+                dataView.Rows.Add(line.id.ToString(), line.trainNum, depCity, arrCity, line.price.ToString(), line.depDate.ToString(), line.arrDate.ToString(), line.remainSeat.ToString());
             }
         }
 
@@ -95,17 +95,21 @@ namespace AdministratorBackEnd
         {
             try
             {
-                if ((int.Parse(dataView.SelectedRows[dataView.SelectedCells[0].RowIndex].Cells[7].Value as string)) != 50)
+                if (int.Parse(dataView.Rows[dataView.SelectedCells[0].RowIndex].Cells[7].Value as string) != 50)
                 {
                     MessageBox.Show("Cannot delete a line which is already ordered.", "Error", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     return;
                 }
-                agent.DeleteLine((int.Parse(dataView.SelectedRows[dataView.SelectedCells[0].RowIndex].Cells[7].Value as string)));
+                agent.DeleteLine((int.Parse(dataView.Rows[dataView.SelectedCells[0].RowIndex].Cells[0].Value as string)));
             }
             catch (Exception ex)
             {
-                
+
+            }
+            finally
+            {
+                frmLineRUD_Load(null, null);
             }
         }
     }
