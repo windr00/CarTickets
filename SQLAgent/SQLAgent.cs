@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLSEVConnector;
 
-namespace AdministratorBackEnd
+namespace SqlAgent
 {
 
 
 
-    class SQLAgent
+    public class SQLAgent
     {
         private static SQLServerConnector connector;
         private static SQLAgent agent;
@@ -29,7 +29,7 @@ namespace AdministratorBackEnd
             {
                 connector = new SQLServerConnector("http://localhost:8080/CarTickets/DBSrv");
             }
-            catch (SQLSEVConnector.SqlException e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -48,7 +48,7 @@ namespace AdministratorBackEnd
                 }
                 return true;
             }
-            catch (SQLSEVConnector.SqlException e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -68,7 +68,7 @@ namespace AdministratorBackEnd
                 return cityList;
 
             }
-            catch (SQLSEVConnector.SqlException e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -85,7 +85,7 @@ namespace AdministratorBackEnd
                     arr_date.ToString() + "');";
                 connector.ExecuteCommand(cmdStr);
             }
-            catch (SQLSEVConnector.SqlException e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -104,7 +104,7 @@ namespace AdministratorBackEnd
                 connector.ExecuteCommand(cmdStr);
 
             }
-            catch (SQLSEVConnector.SqlException e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -125,7 +125,7 @@ namespace AdministratorBackEnd
                 }
                 return lineList;
             }
-            catch (SQLSEVConnector.SqlException e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -139,7 +139,7 @@ namespace AdministratorBackEnd
                 connector.ExecuteCommand(cmdStr);
 
             }
-            catch (SQLSEVConnector.SqlException e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -153,7 +153,7 @@ namespace AdministratorBackEnd
                 var taken = connector.ExecuteCommand(cmdStr).Count;
                 return 50 - (uint) taken;
             }
-            catch (SQLSEVConnector.SqlException e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -166,7 +166,7 @@ namespace AdministratorBackEnd
                 string cmdStr = "insert into city(city_name) values('" + name + "');";
                 connector.ExecuteCommand(cmdStr);
             }
-            catch (SQLSEVConnector.SqlException e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -179,7 +179,7 @@ namespace AdministratorBackEnd
                 string cmdStr = "update city set city_name='" + newName + "' where city_id='" + id.ToString() + "';";
                 connector.ExecuteCommand(cmdStr);
             }
-            catch (SQLSEVConnector.SqlException e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -192,12 +192,36 @@ namespace AdministratorBackEnd
                 string cmdStr = "delete from city where city_id='" + id.ToString() + "';";
                 connector.ExecuteCommand(cmdStr);
             }
-            catch (SQLSEVConnector.SqlException e)
+            catch (Exception e)
             {
                 throw e;
             }
         }
 
+
+        public List<OrderDataBean> GetOrderList()
+        {
+            List<OrderDataBean> orders = new List<OrderDataBean>();
+            try
+            {
+                string cmdStr = "select * from user_order;";
+                var result = connector.ExecuteCommand(cmdStr);
+                foreach (var list in result)
+                {
+                    OrderDataBean data = new OrderDataBean(int.Parse(list[0]), 
+                        list[1], 
+                        int.Parse(list[2]), 
+                        int.Parse(list[3]));
+                    orders.Add(data);
+                }
+
+                return orders;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
     }
 }

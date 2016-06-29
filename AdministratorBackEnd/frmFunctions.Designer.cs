@@ -160,6 +160,7 @@
             this.btnOrderView.TabIndex = 0;
             this.btnOrderView.Text = "查看";
             this.btnOrderView.UseVisualStyleBackColor = true;
+            this.btnOrderView.Click += new System.EventHandler(this.btnOrderView_Click);
             // 
             // frmFunctions
             // 

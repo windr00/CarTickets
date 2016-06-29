@@ -43,49 +43,55 @@ namespace SQLSEVConnector
 
         public List<List<string>> ExecuteCommand(string cmd)
         {
-            List<List<string>> result = new List<List<string>>();
-            HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
-            request.Method = WebRequestMethods.Http.Post;
-            request.ContentType = "application/x-www-form-urlencoded";
-            String postDataStr = "sql=" + cmd;
-            byte[] bytes = Encoding.UTF8.GetBytes(postDataStr);
-            request.ContentLength = bytes.Length;
-            Stream myRequestStream = request.GetRequestStream();
-            myRequestStream.Write(bytes,0, (int)request.ContentLength);
-
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            
-            Stream myResponseStream = response.GetResponseStream();
-            StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
-            string retString = myStreamReader.ReadToEnd();
-            myStreamReader.Close();
-            myResponseStream.Close();
-            if (retString.Contains("Invalid") || retString.Trim().Equals("false"))
+            try
             {
-                throw new SqlException();
-            }
-            else if (retString.Trim().Equals("true"))
-            {
-                return null;
-            }
+                List<List<string>> result = new List<List<string>>();
+                HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
+                request.Method = WebRequestMethods.Http.Post;
+                request.ContentType = "application/x-www-form-urlencoded;charset=UTF8";
+                String postDataStr = "sql=" + cmd;
+                byte[] bytes = Encoding.UTF8.GetBytes(postDataStr);
+                request.ContentLength = bytes.Length;
+                Stream myRequestStream = request.GetRequestStream();
+                myRequestStream.Write(bytes, 0, (int) request.ContentLength);
 
-            JsonData array = JsonMapper.ToObject(retString);
 
-            for (int i = 0; i < array.Count; i++)
-            {
-                JsonData obj = array[i];
-                List<string> list = new List<string>();
-                for (int j = 0; j < obj.Count; j++)
+                HttpWebResponse response = (HttpWebResponse) request.GetResponse();
+
+                Stream myResponseStream = response.GetResponseStream();
+                StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("UTF-8"));
+                string retString = myStreamReader.ReadToEnd();
+                myStreamReader.Close();
+                myResponseStream.Close();
+                if (retString.Contains("Invalid") || retString.Trim().Equals("false"))
                 {
-                    list.Add(obj[j].ToString());
+                    throw new SqlException();
                 }
-                result.Add(list);
+                else if (retString.Trim().Equals("true"))
+                {
+                    return null;
+                }
+
+                JsonData array = JsonMapper.ToObject(retString);
+
+                for (int i = 0; i < array.Count; i++)
+                {
+                    JsonData obj = array[i];
+                    List<string> list = new List<string>();
+                    for (int j = 0; j < obj.Count; j++)
+                    {
+                        list.Add(obj[j].ToString());
+                    }
+                    result.Add(list);
+                }
+
+                return result;
+
             }
-
-            return result;
-            
-
+            catch (WebException e)
+            {
+                throw e;
+            }
         }
 
         //public List<List<string>> ExecuteCommand(string cmd)

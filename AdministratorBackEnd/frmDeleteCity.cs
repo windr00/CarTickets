@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SqlAgent;
 
 namespace AdministratorBackEnd
 {
@@ -48,7 +49,7 @@ namespace AdministratorBackEnd
                         this.Close();
                     }
                 }
-                catch (SQLSEVConnector.SqlException ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("FATAL Error\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

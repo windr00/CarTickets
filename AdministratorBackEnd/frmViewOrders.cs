@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SqlAgent;
 
 namespace AdministratorBackEnd
 {
@@ -21,8 +22,25 @@ namespace AdministratorBackEnd
 
         private void frmViewOrders_Load(object sender, EventArgs e)
         {
-            List<LineDataBean> lineList = new List<LineDataBean>();
-            
+            var lineList = agent.GetLines();
+            var orderList = agent.GetOrderList();
+            foreach (var i in orderList)
+            {
+                string line_num = string.Empty;
+                foreach (var line
+                     in lineList)
+                {
+                    if (line.id == i.line_id)
+                    {
+                        line_num = line.trainNum;
+                        break;
+                    }
+                }
+
+                dataView.Rows.Add(i.order_id, line_num, i.user_id, i.seat_num);
+
+            }
+
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SqlAgent;
 
 namespace AdministratorBackEnd
 {
@@ -30,7 +31,7 @@ namespace AdministratorBackEnd
                     frmFunctions functions = new frmFunctions();
                     functions.Show();
                 }
-                catch (SQLSEVConnector.SqlException ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Error connecting database\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdministratorBackEnd
+namespace SqlAgent
 {
-    class CityDataBean
+    public class CityDataBean
     {
         public string cityId { get; set; }
 

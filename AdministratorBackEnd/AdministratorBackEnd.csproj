@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SQLSEVConnector">
-      <HintPath>..\SQLSEVConnector\bin\Debug\SQLSEVConnector.dll</HintPath>
+    <Reference Include="SQLAgent">
+      <HintPath>..\SQLAgent\bin\Debug\SQLAgent.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CityDataBean.cs" />
     <Compile Include="frmAddLine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,10 +109,8 @@
     <Compile Include="frmViewOrders.Designer.cs">
       <DependentUpon>frmViewOrders.cs</DependentUpon>
     </Compile>
-    <Compile Include="LineDataBean.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SQLAgent.cs" />
     <EmbeddedResource Include="frmAddCity.resx">
       <DependentUpon>frmAddCity.cs</DependentUpon>
     </EmbeddedResource>

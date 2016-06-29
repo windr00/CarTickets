@@ -93,5 +93,14 @@ namespace AdministratorBackEnd
             frm.FormClosed += frmAdd_FormClosed;
             frm.Show();
         }
+
+        private void btnOrderView_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.Enabled = false;
+            frmViewOrders frm = new frmViewOrders();
+            frm.FormClosed += frmAdd_FormClosed;
+            frm.Show();
+        }
     }
 }
