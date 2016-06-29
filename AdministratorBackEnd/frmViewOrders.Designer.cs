@@ -74,6 +74,7 @@
             this.Column2.HeaderText = "客户身份证号";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.Width = 150;
             // 
             // Column3
             // 
@@ -94,6 +95,7 @@
             this.MinimizeBox = false;
             this.Name = "frmViewOrders";
             this.Text = "订单查看";
+            this.Load += new System.EventHandler(this.frmViewOrders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataView)).EndInit();
             this.ResumeLayout(false);
 

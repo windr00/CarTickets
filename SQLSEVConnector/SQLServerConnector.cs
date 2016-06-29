@@ -48,11 +48,11 @@ namespace SQLSEVConnector
             request.Method = WebRequestMethods.Http.Post;
             request.ContentType = "application/x-www-form-urlencoded";
             String postDataStr = "sql=" + cmd;
-            request.ContentLength = Encoding.UTF8.GetByteCount(postDataStr);
+            byte[] bytes = Encoding.UTF8.GetBytes(postDataStr);
+            request.ContentLength = bytes.Length;
             Stream myRequestStream = request.GetRequestStream();
-            StreamWriter myStreamWriter = new StreamWriter(myRequestStream, Encoding.GetEncoding("utf-8"));
-            myStreamWriter.Write(postDataStr);
-            myStreamWriter.Close();
+            myRequestStream.Write(bytes,0, (int)request.ContentLength);
+
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             
@@ -61,10 +61,13 @@ namespace SQLSEVConnector
             string retString = myStreamReader.ReadToEnd();
             myStreamReader.Close();
             myResponseStream.Close();
-
-            if (retString.Contains("Invalid") || retString.Equals("false"))
+            if (retString.Contains("Invalid") || retString.Trim().Equals("false"))
             {
                 throw new SqlException();
+            }
+            else if (retString.Trim().Equals("true"))
+            {
+                return null;
             }
 
             JsonData array = JsonMapper.ToObject(retString);

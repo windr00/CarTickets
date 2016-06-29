@@ -12,9 +12,17 @@ namespace AdministratorBackEnd
 {
     public partial class frmViewOrders : Form
     {
+        private SQLAgent agent = SQLAgent.GetInstance();
+
         public frmViewOrders()
         {
             InitializeComponent();
+        }
+
+        private void frmViewOrders_Load(object sender, EventArgs e)
+        {
+            List<LineDataBean> lineList = new List<LineDataBean>();
+            
         }
     }
 }
