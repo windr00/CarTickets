@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SqlAgent;
 
-namespace SQLSEVConnector
+namespace UserClient
 {
     public partial class frmRegister : Form
     {

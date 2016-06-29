@@ -263,5 +263,20 @@ namespace SqlAgent
         }
 
 
+        public void AddOrder(string user, string line, int seat
+            )
+        {
+            try
+            {
+                string cmdStr = "insert into user_order(user_id, line_id, seat_num) values('" + user + "','" + line +
+                                "','" + seat + "');";
+                connector.ExecuteCommand(cmdStr);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

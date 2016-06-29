@@ -1,4 +1,4 @@
-﻿namespace SQLSEVConnector
+﻿namespace UserClient
 {
     partial class frmRegister
     {

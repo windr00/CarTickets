@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AdministratorBackEnd;
 using SqlAgent;
-using SQLSEVConnector;
 
 namespace UserClient
 {
@@ -31,7 +31,8 @@ namespace UserClient
                     if (user.user_name.Equals(txtUser.Text) && user.user_pass.Equals(txtPass.Text))
                     {
                         this.Hide();
-                        frmFunctions frm = new frmFunctions();
+                        frmLineRUD frm = new frmLineRUD(true);
+                        frm.back += Frm_FormClosed1;
                         frm.Show();
                         return;
 
@@ -46,10 +47,17 @@ namespace UserClient
             }
         }
 
+        private void Frm_FormClosed1()
+        {
+            
+                this.Show();
+        }
+
         private void btnSkip_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmFunctions frm = new frmFunctions();
+            frmLineRUD frm = new frmLineRUD(false);
+            frm.back += Frm_FormClosed1;
             frm.Show();
         }
 
