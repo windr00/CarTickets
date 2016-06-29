@@ -34,6 +34,7 @@
             this.txtUser = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
+            this.btnSkip = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnOK
@@ -82,19 +83,32 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(186, 89);
+            this.btnRegister.Location = new System.Drawing.Point(105, 89);
             this.btnRegister.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(87, 33);
             this.btnRegister.TabIndex = 8;
             this.btnRegister.Text = "注册";
             this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            // 
+            // btnSkip
+            // 
+            this.btnSkip.Location = new System.Drawing.Point(198, 89);
+            this.btnSkip.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSkip.Name = "btnSkip";
+            this.btnSkip.Size = new System.Drawing.Size(87, 33);
+            this.btnSkip.TabIndex = 9;
+            this.btnSkip.Text = "跳过";
+            this.btnSkip.UseVisualStyleBackColor = true;
+            this.btnSkip.Click += new System.EventHandler(this.btnSkip_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 127);
+            this.ClientSize = new System.Drawing.Size(293, 127);
+            this.Controls.Add(this.btnSkip);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.label2);
@@ -121,6 +135,7 @@
         private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Button btnSkip;
     }
 }
 

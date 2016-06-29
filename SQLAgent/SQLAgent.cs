@@ -223,5 +223,45 @@ namespace SqlAgent
             }
         }
 
+        public List<UserDataBean> GetUserList()
+        {
+            List<UserDataBean> users = new List<UserDataBean>();
+            try
+            {
+                string cmdStr = "select * from users;";
+                var result = connector.ExecuteCommand(cmdStr);
+                foreach (var list in result)
+                {
+                    var u = new UserDataBean(list[0], list[1], int.Parse(list[2]), list[3], list[4], list[5]);
+                    users.Add(u);
+                }
+                return users;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public void AddUser(string id, string name, int sex, string tel, string uname, string pass)
+        {
+            try
+            {
+                string cmdStr = "insert into users values('" + id + "','" +
+                                name + "','" +
+                                sex + "','" +
+                                tel + "','" +
+                                uname + "','" +
+                                pass +
+                                "');";
+                connector.ExecuteCommand(cmdStr);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+
     }
 }
