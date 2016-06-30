@@ -175,5 +175,22 @@ namespace AdministratorBackEnd
                 tabPage2_Enter(null, null);
             }
         }
+
+        private void frmLineRUD_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason != CloseReason.ApplicationExitCall)
+            {
+                var ret = MessageBox.Show("Are you sure to quit?", "Closing", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information);
+                if (ret == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
+        }
     }
 }

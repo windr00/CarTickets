@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Deployment.Application;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +22,8 @@ namespace AdministratorBackEnd
             InitializeComponent();
         }
 
+        
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (txtUser.Text != string.Empty && txtPass.Text != string.Empty)
@@ -26,6 +31,8 @@ namespace AdministratorBackEnd
                 try
                 {
                     var sqlAgent = SQLAgent.GetInstance();
+                    
+                    sqlAgent.Connect(File.ReadAllText("server.inf"));
                     sqlAgent.AdminLogin("sa", "???|||");
                     this.Hide();
                     frmFunctions functions = new frmFunctions();
@@ -33,7 +40,17 @@ namespace AdministratorBackEnd
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error connecting database\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error connecting server\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (ex is WebException)
+                    {
+                        frmServerConfigure frm = new frmServerConfigure();
+                        this.Enabled = false;
+                        frm.FormClosed += (o, arg) =>
+                        {
+                            this.Enabled = true;
+                        };
+                        frm.Show();
+                    }
                 }
             }
             else
@@ -42,5 +59,21 @@ namespace AdministratorBackEnd
                     MessageBoxIcon.Error);
             }
         }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            if (!File.Exists("server.inf"))
+            {
+                frmServerConfigure frm = new frmServerConfigure();
+                frm.FormClosed += (o, arg) =>
+                {
+                    this.Enabled = true;
+                };
+                this.Enabled = false;
+                frm.Show();
+
+            }
+        }
+        
     }
 }

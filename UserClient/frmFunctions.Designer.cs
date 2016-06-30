@@ -256,6 +256,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLineRUD";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLineRUD_FormClosing);
             this.Load += new System.EventHandler(this.frmLineRUD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataView)).EndInit();
             this.tabControl1.ResumeLayout(false);

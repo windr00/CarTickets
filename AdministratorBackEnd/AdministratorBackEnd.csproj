@@ -98,6 +98,12 @@
     <Compile Include="frmModifyCity.Designer.cs">
       <DependentUpon>frmModifyCity.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmServerConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmServerConfigure.Designer.cs">
+      <DependentUpon>frmServerConfigure.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmViewCity.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmModifyCity.resx">
       <DependentUpon>frmModifyCity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmServerConfigure.resx">
+      <DependentUpon>frmServerConfigure.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewCity.resx">
       <DependentUpon>frmViewCity.cs</DependentUpon>

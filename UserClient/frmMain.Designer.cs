@@ -122,6 +122,7 @@
             this.MinimizeBox = false;
             this.Name = "frmMain";
             this.Text = "用户登录";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

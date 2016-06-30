@@ -25,9 +25,13 @@ namespace SqlAgent
         }
         private SQLAgent()
         {
+        }
+
+        public void Connect(string  ip)
+        {
             try
             {
-                connector = new SQLServerConnector("http://localhost:8080/CarTickets/DBSrv");
+                connector = new SQLServerConnector("http://" + ip + ":8080/CarTickets/DBSrv");
             }
             catch (Exception e)
             {

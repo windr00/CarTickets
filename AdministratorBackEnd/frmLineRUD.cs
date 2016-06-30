@@ -105,7 +105,7 @@ namespace AdministratorBackEnd
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("FATAL ERROR\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

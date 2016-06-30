@@ -47,7 +47,9 @@ namespace SQLSEVConnector
             try
             {
                 List<List<string>> result = new List<List<string>>();
+                
                 request = (HttpWebRequest) WebRequest.Create(url);
+                request.Timeout = 2;
                 request.Method = WebRequestMethods.Http.Post;
                 request.ContentType = "application/x-www-form-urlencoded;charset=UTF8";
                 String postDataStr = "sql=" + cmd;

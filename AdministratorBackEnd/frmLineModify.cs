@@ -70,7 +70,7 @@ namespace AdministratorBackEnd
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("FATAL Error\n" + e.ToString(), "Error", MessageBoxButtons.OK,
+                    MessageBox.Show("FATAL Error\n" + ex.ToString(), "Error", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }

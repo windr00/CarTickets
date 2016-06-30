@@ -104,7 +104,7 @@ namespace AdministratorBackEnd
             }
             catch (Exception ex)
             {
-                MessageBox.Show("FATAL ERROR\n" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("FATAL ERROR\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 frmModifyCity_Load(null, null);
             }
         }
