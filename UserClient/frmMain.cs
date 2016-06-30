@@ -31,7 +31,7 @@ namespace UserClient
                     if (user.user_name.Equals(txtUser.Text) && user.user_pass.Equals(txtPass.Text))
                     {
                         this.Hide();
-                        frmLineRUD frm = new frmLineRUD(true);
+                        frmLineRUD frm = new frmLineRUD(true, user.user_id);
                         frm.back += Frm_FormClosed1;
                         frm.Show();
                         return;
@@ -56,7 +56,7 @@ namespace UserClient
         private void btnSkip_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmLineRUD frm = new frmLineRUD(false);
+            frmLineRUD frm = new frmLineRUD(false, string.Empty);
             frm.back += Frm_FormClosed1;
             frm.Show();
         }

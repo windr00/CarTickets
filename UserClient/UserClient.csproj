@@ -49,11 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmLineView.cs">
+    <Compile Include="frmFunctions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLineView.Designer.cs">
-      <DependentUpon>frmLineView.cs</DependentUpon>
+    <Compile Include="frmFunctions.Designer.cs">
+      <DependentUpon>frmFunctions.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -69,8 +69,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmLineView.resx">
-      <DependentUpon>frmLineView.cs</DependentUpon>
+    <EmbeddedResource Include="frmFunctions.resx">
+      <DependentUpon>frmFunctions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

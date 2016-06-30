@@ -262,6 +262,45 @@ namespace SqlAgent
             }
         }
 
+        public List<int> GetSeatNumsByLine(string order_line_id)
+        {
+            try
+            {
+                List<int> seats = new List<int>();
+                string cmdStr = "select * from user_order where line_id='" + order_line_id + "';";
+                var result = connector.ExecuteCommand(cmdStr);
+                foreach (var ilist   in result)
+                {
+                    seats.Add(int.Parse(ilist[3]));
+                }
+                return seats;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public List<OrderDataBean> GetOrdersByUser(string order_user_id)
+        {
+            try
+            {
+                List<OrderDataBean> orders = new List<OrderDataBean>();
+
+                string cmdStr = "select * from user_order where user_id='" + order_user_id + "';";
+                var result = connector.ExecuteCommand(cmdStr);
+                foreach (var list in result)
+                {
+                    orders.Add(new OrderDataBean(int.Parse(list[0]), list[1], int.Parse(list[2]), int.Parse(list[3])));
+                }
+                return orders;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
 
         public void AddOrder(string user, string line, int seat
             )
@@ -270,6 +309,19 @@ namespace SqlAgent
             {
                 string cmdStr = "insert into user_order(user_id, line_id, seat_num) values('" + user + "','" + line +
                                 "','" + seat + "');";
+                connector.ExecuteCommand(cmdStr);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public void DeleteOrder(string order_id)
+        {
+            try
+            {
+                string cmdStr = "delete from user_order where order_id='" + order_id + "';";
                 connector.ExecuteCommand(cmdStr);
             }
             catch (Exception e)
