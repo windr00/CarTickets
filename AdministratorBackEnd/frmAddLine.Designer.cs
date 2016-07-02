@@ -131,6 +131,8 @@
             // 
             // dateDep
             // 
+            this.dateDep.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dateDep.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateDep.Location = new System.Drawing.Point(76, 152);
             this.dateDep.Name = "dateDep";
             this.dateDep.Size = new System.Drawing.Size(243, 23);
@@ -138,6 +140,8 @@
             // 
             // dateArr
             // 
+            this.dateArr.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dateArr.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateArr.Location = new System.Drawing.Point(76, 181);
             this.dateArr.Name = "dateArr";
             this.dateArr.Size = new System.Drawing.Size(243, 23);
