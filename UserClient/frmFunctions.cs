@@ -91,9 +91,18 @@ namespace AdministratorBackEnd
             }
             else
             {
-                btnOrder.Enabled = false;
                 int index = dataView.SelectedCells[0].RowIndex;
                 LineDataBean line = lineList[index];
+                var orders = agent.GetOrdersByUser(this.user_id);
+                foreach (var o in orders)
+                {
+                    if (line.id == o.line_id)
+                    {
+                        MessageBox.Show("You have already ordered one ticket on this train", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                }
+                btnOrder.Enabled = false;
                 List<int> seats = new List<int>();
                 for (int i = 1; i <= 50; i++)
                 {
@@ -121,6 +130,7 @@ namespace AdministratorBackEnd
                     {
                         agent.AddOrder(user_id, line.id.ToString(), seat);
                         MessageBox.Show("Tickets ordered", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        frmLineRUD_Load(null, null);
                     }
                     catch (Exception ex)
                     {
@@ -191,6 +201,11 @@ namespace AdministratorBackEnd
                     Application.Exit();
                 }
             }
+        }
+
+        private void tabPage1_Enter(object sender, EventArgs e)
+        {
+            frmLineRUD_Load(null, null);
         }
     }
 }

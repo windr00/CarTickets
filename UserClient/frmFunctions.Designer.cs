@@ -180,6 +180,7 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "路线查看与预定";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Enter += new System.EventHandler(this.tabPage1_Enter);
             // 
             // tabPage2
             // 

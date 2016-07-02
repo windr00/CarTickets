@@ -66,6 +66,7 @@
             this.txtRName.Name = "txtRName";
             this.txtRName.Size = new System.Drawing.Size(186, 23);
             this.txtRName.TabIndex = 3;
+            this.txtRName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRName_KeyPress);
             // 
             // label2
             // 

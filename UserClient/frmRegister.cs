@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SqlAgent;
@@ -42,6 +43,15 @@ namespace UserClient
             {
                 MessageBox.Show("Not enough information", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
+            }
+        }
+
+        private void txtRName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Regex regex = new Regex("^[\u4e00-\u9fa5]+$");
+            if (!regex.IsMatch(e.KeyChar.ToString()) && e.KeyChar != 8)
+            {
+                e.Handled = true;
             }
         }
     }

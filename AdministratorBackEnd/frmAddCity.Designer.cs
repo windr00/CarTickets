@@ -49,6 +49,7 @@
             this.txtCityName.Name = "txtCityName";
             this.txtCityName.Size = new System.Drawing.Size(202, 23);
             this.txtCityName.TabIndex = 1;
+            this.txtCityName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCityName_KeyPress);
             // 
             // btnAdd
             // 
