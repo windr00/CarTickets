@@ -33,7 +33,11 @@ namespace AdministratorBackEnd
                     var sqlAgent = SQLAgent.GetInstance();
                     
                     sqlAgent.Connect(File.ReadAllText("server.inf"));
-                    sqlAgent.AdminLogin("sa", "???|||");
+                    if (!sqlAgent.AdminLogin("sa", "???|||"))
+                    {
+                        MessageBox.Show("User name or password incorrect", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     this.Hide();
                     frmFunctions functions = new frmFunctions();
                     functions.Show();
