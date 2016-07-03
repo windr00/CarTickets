@@ -30,9 +30,9 @@ namespace UserClient
         private void btnOK_Click(object sender, EventArgs e)
         {
             SQLAgent agent = SQLAgent.GetInstance();
-            if (!txtPass.Text.Equals(string.Empty) || !txtId.Text.Equals(string.Empty) ||
-                !txtRName.Text.Equals(string.Empty) ||
-                !txtTel.Text.Equals(string.Empty) || !txtUser.Text.Equals(string.Empty) ||
+            if (!txtPass.Text.Equals(string.Empty) && !txtId.Text.Equals(string.Empty) &&
+                !txtRName.Text.Equals(string.Empty) &&
+                !txtTel.Text.Equals(string.Empty) && !txtUser.Text.Equals(string.Empty) &&
                 cmbSex.Items.Contains(cmbSex.Text))
             {
                 agent.AddUser(txtId.Text,txtRName.Text, cmbSex.SelectedIndex, txtTel.Text, txtUser.Text, txtPass.Text);
