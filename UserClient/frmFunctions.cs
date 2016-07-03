@@ -109,6 +109,11 @@ namespace AdministratorBackEnd
                     seats.Add(i);
                 }
                 List<int> takenSeats = agent.GetSeatNumsByLine(line.id.ToString());
+                if (takenSeats.Count >= 50)
+                {
+                    MessageBox.Show("This line has been sold out", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 foreach (var i in takenSeats)
                 {
                     seats.Remove(i);
